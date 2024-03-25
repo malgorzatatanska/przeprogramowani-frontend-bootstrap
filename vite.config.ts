@@ -1,6 +1,10 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import packageJson from './package.json';
+
+const env = loadEnv('', process.cwd(), 'XYZ');
+
+console.log(env);
 
 export default defineConfig({
   define: {
@@ -9,5 +13,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  plugins: [react()],
+  plugins: [react(), splitVendorChunkPlugin()],
 });
