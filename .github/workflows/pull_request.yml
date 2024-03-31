@@ -42,7 +42,8 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vecel
-        run: DEPLOY_OUTPUT="$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})"
+        run: |
+          DEPLOY_OUTPUT="$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})"
           DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep http | tail -n 1)
           echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
 
