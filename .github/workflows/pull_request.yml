@@ -1,4 +1,4 @@
-name: Deploy to netlify and vercel!
+name: Pull req prebuild - vercel!
 
 on:
   pull_request:
