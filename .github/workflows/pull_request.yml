@@ -8,6 +8,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,9 +40,6 @@ jobs:
 
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Vecel
         run: DEPLOY_OUTPUT="$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})"
