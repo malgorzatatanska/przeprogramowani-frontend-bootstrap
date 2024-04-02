@@ -5,9 +5,11 @@ export const VersionApp = () => {
   const { appVersion } = useConfig();
   const viteEnv = import.meta.env.VITE_ENVIRONMENT;
 
+  console.log();
+
   return (
     <div>
-      ENV: DEV - VER: {viteEnv} {appVersion}
+      ENV: {viteEnv} VER: {appVersion}
     </div>
   );
 };
