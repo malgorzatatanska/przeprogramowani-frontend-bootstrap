@@ -18,7 +18,7 @@ jobs:
       - name: Verify and test code
         uses: ./.github/actions/verify-test
 
-      - name: Build the app
+      - name: Build the app!
         run: npm run build
         env:
           VITE_ENVIRONMENT: 'Staging'
