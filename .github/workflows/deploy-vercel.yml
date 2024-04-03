@@ -45,6 +45,6 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npm run test:e2e
         env:
           PLAYWRIGHT_TEST_BASE_URL: 'https://przeprogramowani-frontend-bootstrap.vercel.app/'
