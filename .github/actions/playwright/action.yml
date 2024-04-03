@@ -1,0 +1,20 @@
+name: Playwright Tests
+description: Playwright Tests
+
+
+runs:
+  using: 'composite'
+  steps:
+     steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Playwright
+      run: npx playwright install --with-deps
+    - name: Run Playwright tests
+      run: npx playwright test
+      env:
+        PLAYWRIGHT_TEST_BASE_URL: 'https://przeprogramowani-frontend-bootstrap.vercel.app/'

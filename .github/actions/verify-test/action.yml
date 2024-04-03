@@ -1,0 +1,13 @@
+name: Verify and test
+description: Verify and test project
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Lint code
+      run: npm run lint
+      shell: bash
+
+    - name: Test code
+      run: npm run test
+      shell: bash

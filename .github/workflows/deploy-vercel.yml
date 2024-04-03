@@ -15,14 +15,13 @@ jobs:
       - name: Configure node
         uses: ./.github/actions/setup-project
 
-      - name: Lint code
-        run: npm run lint
-
-      - name: Test code
-        run: npm run test
+      - name: Verify and test code
+        uses: ./.github/actions/verify-test
 
       - name: Build the app
         run: npm run build
+        env:
+          VITE_ENVIRONMENT: 'Staging'
 
       - name: Deploy app to Vercel production env
         uses: ./.github/actions/deploy-vercel
@@ -32,3 +31,10 @@ jobs:
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Run playwright test
+        uses: ./.github/actions/playwright
